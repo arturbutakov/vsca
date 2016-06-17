@@ -1,0 +1,50 @@
+﻿<div class=" col-md-offset-3 col-md-9 nopadding teachers">
+	<h1>Преподаватели</h1>
+	
+	<!-- ТЕКУЩИЕ ПРЕПОДАВАТЕЛИ -->
+	<div class="row teachers-block teachers-new">
+		<div class="col-md-{{ 12/3 }}" ng-repeat="teacher in teachers | filter:{status:1}">
+			<img ng-src="img/teachers/{{ teacher.image }}" class=" img-responsive">
+			<h3>{{ teacher.name }}</h3>
+			<p>{{ teacher.info }}</p>
+			<button type="button" class="btn btn-block btn-ghost btn-thin" ng-click="getPortfolio(teacher.id)" data-toggle="modal" data-target="#portfolio">
+				Открыть портфолио
+			</button>
+
+		</div>
+	</div>
+
+	<!-- БЫВШИЕ ПРЕПОДАВАТЕЛИ -->
+	<div class="row teachers-block teachers-old">
+		<h2><b>У нас преподавали</b></h2>
+		<div class="col-md-3" ng-repeat="teacher in teachers | filter:{status:0}">
+			<a href="#" ng-click="getPortfolio(teacher.id)" data-toggle="modal" data-target="#portfolio">
+				<img ng-src="img/teachers/{{ teacher.image }}" class=" img-responsive">
+				<h4>{{ teacher.name }}</h4>
+				<!-- <button class="hoverbutton">
+					<span class="glyphicon glyphicon-picture"></span>
+				</button> -->
+			</a>
+		</div>
+	</div>
+</div>
+
+<!-- ПОРТФОЛИО -->
+<div class="modal fade" id="portfolio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-repeat="teacher in teachers | filter:{id:teacherId}">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content modal-strong">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 class="modal-title" id="myModalLabel">Портфолио: <b>{{ teacher.name }}</b></h3>
+			</div>
+			<div class="modal-body">
+				<p>{{ teacher.portfolio }}</p>
+				<img ng-src="{{ image }}" class="img-responsive" ng-repeat="image in images">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-ghost btn-thin">Оставить заявку на обучение</button>
+				<button type="button" class="btn btn-ghost btn-thin" data-dismiss="modal">Закрыть</button>
+			</div>
+		</div>
+	</div>
+</div>

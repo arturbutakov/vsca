@@ -1,0 +1,68 @@
+.news {
+	min-height: 4000px;
+}
+.news > div {
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: -50px;
+	padding-top: 60px;
+	background-color: rgba(255,255,255,.05);
+	border-bottom: 5px solid rgba(219,254,74,1);
+}
+.news > div:last-child {
+	border-bottom: transparent;
+}
+.news > div > p {
+	text-align: justify;
+}
+.news-fixed {
+	position: fixed;
+	left: 72%;
+	top: 149px;
+	width: 20%;
+}
+.news-fixed > div {
+	margin-left: 15px;
+}
+.news-fixed > ul {
+	list-style: none;
+	margin-left: 15px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding-top: 15px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+	border-top: 5px solid rgba(219,254,74,1);
+	
+	height: 300px;
+	overflow-y: auto;
+	-ms-overflow-style: none;
+	overflow: -moz-scrollbars-none;
+}
+.news-fixed > ul::-webkit-scrollbar { 
+	width: 0; 
+}
+.news-fixed > ul > li {
+	margin-bottom: 10px;
+	line-height: 120%;
+	margin-left: 0px;
+}
+.news-fixed > ul > li > a {
+	font-size: 14px;
+	padding: 0px;
+	border-width: 2px;
+}
+.news-fixed > ul > li > a:hover,
+.news-fixed > ul > li > a:focus {
+	padding: 0px;
+	border-width: 2px;
+	border-color: transparent;
+}
+.news-fixed > ul > .active > a {
+	border-color: transparent;
+}
+iframe {
+	width: 100%;
+	height: 315px;
+}
+

@@ -1,0 +1,32 @@
+.students > div {
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 20px;
+	background-color: rgba(255,255,255,.05);
+	border-bottom: 5px solid rgba(219,254,74,1);
+}
+.students > div:last-child {
+	border-bottom: transparent;
+}
+.waves-block > h2 {
+	margin-bottom: 10px;
+}
+.students-block {
+	text-align: center;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	margin-top: 10px;
+}
+.students-block > div:first-child {
+	padding-right: 15px;
+}
+.students-block > div > img {
+	margin-top: 20px;
+}
+.students-block > div > p {
+	text-align: justify;
+}
+.students-block > div > h3{
+	text-align: left;
+}

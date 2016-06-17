@@ -1,0 +1,51 @@
+<div class=" col-md-offset-3 col-md-6 nopadding programs">
+	<h1>Направления</h1>
+	
+	<!-- ОПИСАНИЕ НАПРАВЛЕНИЙ -->
+	<div class="row" id="{{ program.id }}" ng-repeat="program in programs">
+		<h2><b>{{ program.name }}</b></h2>
+		<!-- <img src="/img/programs2.jpg" class="img-responsive"> -->
+		<h4>{{ program.info }}</h4>
+		<p>
+			<b>КОМУ:</b>
+			{{ program.description }}
+		</p>
+	</div>
+</div>
+
+<!-- ПРАВОЕ МЕНЮ -->
+<div class="col-md-3 hidden-xs hidden-sm">
+	<div class="programs-fixed">
+		<ul>
+			<li ng-repeat="program in programs">
+				<a href="#{{ program.id }}">
+					{{ program.name }}
+				</a>
+			</li>
+		</ul>
+		<div>
+			<button class="btn btn-block btn-ghost btn-bold" data-toggle="modal" data-target="#portfolio">
+				Заполнить заявку на обучение
+			</button>
+		</div>
+	</div>
+</div>
+
+<!-- ПОРТФОЛИО -->
+<div class="modal fade" id="portfolio" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content modal-strong">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 class="modal-title" id="myModalLabel">Заявка: <b>Обучение в ВШСИ</b></h3>
+			</div>
+			<div class="modal-body">
+				ФИО, книги, мотивация
+				<input type="text" class="btn btn-ghost btn-block btn-thin">
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-ghost btn-bold">Отправить</button>
+			</div>
+		</div>
+	</div>
+</div>

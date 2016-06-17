@@ -1,0 +1,39 @@
+.projects > div {
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 20px;
+	background-color: rgba(255,255,255,.05);
+}
+.projects-block {
+	text-align: center;
+}
+.projects-block > div:first-child {
+	padding-left: 0px;
+}
+.projects-block > div:last-child {
+	padding-right: 0px;
+}
+.projects-block > div > p {
+	text-align: justify;
+}
+.projects-block > div > a > img {
+	margin: auto;
+}
+.partners {	
+	margin-top: 50px;
+	text-align: center;
+	border-top: 5px solid rgba(219,254,74,1);
+	background-color: #fff;
+}
+.partners > h2 {
+	font-weight: bold;
+	text-align: left;
+}
+.partners > div {
+	margin-top: 20px;
+	height: 180px;
+}
+.partners > div > img {
+	height: 100px;
+	margin: auto;
+}

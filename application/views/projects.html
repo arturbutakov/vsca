@@ -1,0 +1,22 @@
+﻿<div class=" col-md-offset-3 col-md-9 nopadding projects">
+	<h1>Проекты</h1>
+
+	<div class="row projects-block nopadding">
+		<div class="col-md-6" ng-repeat="project in projects">
+			<a href="{{ project.link }}">
+				<img src="img/projects/{{ project.image }}" class="img-responsive">
+				<h3>{{ project.name }}</h3>
+			</a>
+			<p>{{ project.description }}</p>
+		</div>
+	</div>
+
+	<div class="row partners nopadding">
+		<h2>Наши партнеры</h2>
+		<div class="col-md-3" ng-repeat="partner in partners">
+			<img src="img/partners/{{ partner.image }}" class="img-responsive">
+			<b>{{ partner.name }}</b><br/>
+			{{ partner.description }}
+		</div>
+	</div>
+</div>

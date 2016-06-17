@@ -1,0 +1,470 @@
+<div class=" col-md-offset-3 col-md-6 nopadding admin">
+	<h1>Панель администратора</h1>
+	
+	<!-- РАЗДЕЛ НОВОСТИ -->
+	<div class="row panel-group" id="news">
+		<h2><b>Новости</b></h2>
+		
+		<!-- ДОБАВИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#newsAdd" data-parent="#news">
+				Добавить новость
+			</button>
+			<div id="newsAdd" class="collapse back-green panel-body panel-colapse">
+				<form>
+					<b>Заголовок*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="title"><br/>
+					<b>Изображение*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" ng-model="image" type="file">
+					<b>Информация о месте и времени*</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="3" ng-model="info"></textarea>
+					<b>Основной блок текста*</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="6" ng-model="descriptionShort"></textarea>
+					<b>Основной блок текста (продолжение)</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="10" ng-model="descriptionLong"></textarea>
+					<br>
+					<input required class="btn btn-ghost btn-bold btn-input" type="submit" value="Добавить" ng-click="addNews()">
+				</form>
+			</div>
+		</div>
+
+		<!-- УДАЛИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#newsDelete" data-parent="#news">
+				Удалить новость
+			</button>
+			<div id="newsDelete" class="collapse back-red panel-collapse">
+				<div ng-repeat="new in news">
+					<button type="button" class="btn btn-ghost btn-bold" ng-click="bind('news',new.id)" data-toggle="modal" data-target="#delete">
+						{{ new.title }}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- РЕДАКТИРОВАТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#newsEdit" data-parent="#news">
+				Редактировать новость
+			</button>
+			<div id="newsEdit" class="collapse back-blue panel-colapse">
+				<div ng-repeat="new in news">
+					<button type="button" class="btn btn-ghost btn-bold" ng-click="edit('news', new.id)" data-toggle="modal" data-target="#delete">
+						{{ new.title }}
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- РАЗДЕЛ НАПРАВЛЕНИЯ -->
+	<div class="row panel-group" id="programs">
+		<h2><b>Направления</b></h2>
+
+		<!-- ДОБАВИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#programsAdd" data-parent="#programs">
+				Добавить направление
+			</button>
+			<div id="programsAdd" class="collapse back-green panel-body panel-collapse">
+				<form>
+					<b>Название*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="name"><br/>
+					<b>Изображение*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" ng-model="image" type="file">
+					<b>Основной блок текста*</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="6" ng-model="info"></textarea>
+					<b>Кому*</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="3" ng-model="description"></textarea>
+					<br>
+					<input class="btn btn-ghost btn-bold" type="submit" value="Добавить" ng-click="addPrograms()">
+				</form>
+			</div>
+		</div>
+
+		<!-- УДАЛИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#programsDelete" data-parent="#programs">
+				Удалить направление
+			</button>
+			<div id="programsDelete" class="collapse back-red panel-collapse">
+				<div ng-repeat="program in programs">
+					<button type="button" class="btn btn-ghost btn-bold" ng-click="bind('programs',program.id)" data-toggle="modal" data-target="#delete"  data-parent="#programs">
+						{{ program.name }}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- РЕДАКТИРОВАТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#programsEdit" data-parent="#programs">
+				Редактировать направление
+			</button>
+			<div id="programsEdit" class="collapse back-blue panel-collapse">
+				<p>Какая-то форма</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- РАЗДЕЛ ПРЕПОДАВАТЕЛИ -->
+	<div class="row panel-group" id="teachers">
+		<h2><b>Преподаватели</b></h2>
+
+		<!-- ДОБАВИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#teachersAdd" data-parent="#teachers">
+				Добавить преподавателя
+			</button>
+			<div id="teachersAdd" class="collapse back-green panel-body panel-collapse">
+				<form>
+					<b>Имя*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="name"><br/>
+					<b>Изображение*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="file" ng-model="image">
+					<b>Малый блок информации*</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="3" ng-model="info"></textarea>
+					<b>Основной блок информации (портфолио)*</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="10" ng-model="portfolio"></textarea>
+					<div class="checkbox">
+						<label>        
+							<input required type="checkbox" ng-model="status"><b>Преподаватель уже отчитал свой курс</b>
+						</label>
+					</div>
+					<input class="btn btn-ghost btn-bold" type="submit" value="Добавить" ng-click="addTeachers()">
+				</form>
+			</div>
+		</div>
+
+		<!-- УДАЛИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#teachersDelete" data-parent="#teachers">
+				Удалить преподавателя
+			</button>
+			<div id="teachersDelete" class="collapse back-red panel-collapse">
+				<div ng-repeat="teacher in teachers">
+					<button type="button" class="btn btn-ghost btn-bold" ng-click="bind('teachers',teacher.id)" data-toggle="modal" data-target="#delete">
+						{{ teacher.name }}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- РЕДАКТИРОВАТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#teachersEdit" data-parent="#teachers">
+				Редактировать преподавателя
+			</button>
+			<div id="teachersEdit" class="collapse panel-collapse back-blue">
+				<p>Какая-то форма</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- РАЗДЕЛ УЧАСТНИКИ -->
+	<div class="row panel-group" id="students">
+		<h2><b>Участники</b></h2>
+
+		<!-- ДОБАВИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#studentsAdd" data-parent="#students">
+				Добавить участника
+			</button>
+			<div id="studentsAdd" class="collapse back-green panel-body panel-collapse">
+				<form>
+					<b>Имя*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="name"><br/>
+					<b>Изображение*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" ng-model="image" type="file">
+					<b>Малый блок информации*</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="3" ng-model="info"></textarea>
+					<b>Основной блок информации (портфолио)*</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="10" ng-model="portfolio"></textarea>
+					<b>Направление участника*</b>
+					<select class="btn btn-ghost btn-thin btn-block btn-input" ng-model="programId" ng-options="program.name for program in programs"></select>
+					<b>Набор участника*</b>
+					<select class="btn btn-ghost btn-thin btn-block btn-input" ng-model="waveId" ng-options="wave.name for wave in waves"></select>
+					<br/>
+					<input class="btn btn-ghost btn-bold" type="submit" value="Добавить" ng-click="addStudents()">
+				</form>
+			</div>
+		</div>
+
+		<!-- УДАЛИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#studentsDelete" data-parent="#students">
+				Удалить участника
+			</button>
+			<div id="studentsDelete" class="collapse back-red panel-collapse">
+				<div ng-repeat="student in students">
+					<button type="button" class="btn btn-ghost btn-bold" ng-click="bind('students',student.id)" data-toggle="modal" data-target="#delete">
+						{{ student.name }}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- РЕДАКТИРОВАТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#studentsEdit" data-parent="#students">
+				Редактировать участника
+			</button>
+			<div id="studentsEdit" class="collapse panel-collapse back-blue">
+				<p>Какая-то форма</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- РАЗДЕЛ ПРОЕКТЫ -->
+	<div class="row panel-group" id="projects">
+		<h2><b>Проекты</b></h2>
+
+		<!-- ДОБАВИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#projectsAdd" data-parent="#projects">
+				Добавить проект
+			</button>
+			<div id="projectsAdd" class="collapse back-green panel-body panel-collapse">
+				<form>
+					<b>Имя*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="name"><br/>
+					<b>Логотип*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" ng-model="image" type="file">
+					<b>Описание*</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="6" ng-model="description"></textarea>
+					<b>URL-адрес</b>
+					<input class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="link"><br/>
+					<input class="btn btn-ghost btn-bold" type="submit" value="Добавить" ng-click="addProjects()">
+				</form>
+			</div>
+		</div>
+
+		<!-- УДАЛИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#projectsDelete" data-parent="#projects">
+				Удалить проект
+			</button>
+			<div id="projectsDelete" class="collapse back-red panel-collapse">
+				<div ng-repeat="project in projects">
+					<button type="button" class="btn btn-ghost btn-bold" ng-click="bind('projects',project.id)" data-toggle="modal" data-target="#delete"  data-parent="#projects">
+						{{ project.name }}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- РЕДАКТИРОВАТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#projectsEdit" data-parent="#projects">
+				Редактировать проект
+			</button>
+			<div id="projectsEdit" class="collapse back-blue panel-collapse">
+				<p>Какая-то форма</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- РАЗДЕЛ ПАРТНЕРЫ -->
+	<div class="row panel-group" id="partners">
+		<h2><b>Партнеры</b></h2>
+
+		<!-- ДОБАВИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#partnersAdd" data-parent="#partners">
+				Добавить партнера
+			</button>
+			<div id="partnersAdd" class="collapse back-green panel-body panel-collapse">
+				<form>
+					<b>Название*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="name"><br/>
+					<b>Изображение*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" ng-model="image" type="file">
+					<b>Описание*</b>
+					<textarea class="btn btn-ghost btn-thin btn-block btn-input" rows="6" ng-model="description"></textarea>
+					<b>URL-адрес</b>
+					<input class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="link">
+					<br>
+					<input class="btn btn-ghost btn-bold" type="submit" value="Добавить" ng-click="addPartners()">
+				</form>
+			</div>
+		</div>
+
+		<!-- УДАЛИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#partnersDelete" data-parent="#partners">
+				Удалить партнера
+			</button>
+			<div id="partnersDelete" class="collapse back-red panel-collapse">
+				<div ng-repeat="partner in partners">
+					<button type="button" class="btn btn-ghost btn-bold" ng-click="bind('partners',partner.id)" data-toggle="modal" data-target="#delete"  data-parent="#partners">
+						{{ partner.name }}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- РЕДАКТИРОВАТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#partnersEdit" data-parent="#partners">
+				Редактировать партнера
+			</button>
+			<div id="partnersEdit" class="collapse back-blue panel-collapse">
+				<p>Какая-то форма</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- РАЗДЕЛ НАБОРЫ -->
+	<div class="row panel-group" id="waves">
+		<h2><b>Наборы</b></h2>
+
+		<!-- ДОБАВИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#wavesAdd" data-parent="#waves">
+				Добавить набор
+			</button>
+			<div id="wavesAdd" class="collapse back-green panel-body panel-collapse">
+				<form>
+					<b>Название*</b> например "Первый набор"
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="name"><br/>
+					<b>Год набора*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="number" ng-model="year"><br/>
+					<input class="btn btn-ghost btn-bold" type="submit" value="Добавить" ng-click="addWaves()">
+				</form>
+			</div>
+		</div>
+
+		<!-- УДАЛИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#wavesDelete" data-parent="#waves">
+				Удалить набор
+			</button>
+			<div id="wavesDelete" class="collapse back-red panel-collapse">
+				<div ng-repeat="wave in waves">
+					<button type="button" class="btn btn-ghost btn-bold" ng-click="bind('waves',wave.id)" data-toggle="modal" data-target="#delete">
+						{{ wave.name }}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- РЕДАКТИРОВАТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#wavesEdit" data-parent="#waves">
+				Редактировать набор
+			</button>
+			<div id="wavesEdit" class="collapse back-blue panel-collapse">
+				<p>Какая-то форма</p>
+			</div>
+		</div>
+	</div>
+
+	<!-- РАЗДЕЛ ССЫЛКИ -->
+	<div class="row panel-group" id="links">
+		<h2><b>Ссылки</b></h2>
+
+		<!-- ДОБАВИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#linksAdd" data-parent="#links">
+				Добавить ссылку
+			</button>
+			<div id="linksAdd" class="collapse back-green panel-body panel-collapse">
+				<form>
+					<b>Название*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="name"><br/>
+					<b>URL-адрес*</b>
+					<input required class="btn btn-ghost btn-thin btn-block btn-input" type="text" ng-model="link"><br/>
+					<input class="btn btn-ghost btn-bold" type="submit" value="Добавить" ng-click="addLinks()">
+				</form>
+			</div>
+		</div>
+
+		<!-- УДАЛИТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#linksDelete" data-parent="#links">
+				Удалить ссылку
+			</button>
+			<div id="linksDelete" class="collapse back-red panel-collapse">
+				<div ng-repeat="link in links">
+					<button type="button" class="btn btn-ghost btn-bold" ng-click="bind('links',link.id)" data-toggle="modal" data-target="#delete">
+						{{ link.name }}
+					</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- РЕДАКТИРОВАТЬ -->
+		<div class="panel panel-default">
+			<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#linksEdit" data-parent="#links">
+				Редактировать ссылку
+			</button>
+			<div id="linksEdit" class="collapse back-blue panel-collapse">
+				<p>Какая-то форма</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- ПРАВОЕ МЕНЮ -->
+<div class="col-md-3 hidden-xs hidden-sm">
+	<div class="admin-fixed">
+		<ul>
+			<li>
+				<a href="#news">
+					Новости
+				</a>
+			</li>
+			<li>
+				<a href="#programs">
+					Направления
+				</a>
+			</li>
+			<li>
+				<a href="#teachers">
+					Преподаватели
+				</a>
+			</li>
+			<li>
+				<a href="#students">
+					Участники
+				</a>
+			</li>
+			<li>
+				<a href="#projects">
+					Проекты
+				</a>
+			</li>
+			<li>
+				<a href="#partners">
+					Партнеры
+				</a>
+			</li>
+			<li>
+				<a href="#waves">
+					Наборы
+				</a>
+			</li>
+			<li>
+				<a href="#links">
+					Ссылки
+				</a>
+			</li>
+		</ul>
+		<div>
+			<button class="btn btn-block btn-ghost btn-bold" ng-click="logout()">Завершить сеанс</button>
+		</div>
+	</div>
+</div>
+
+<!-- ОКНО ПРОВЕРКА НА СЛУЧАЙНОСТЬ -->
+<div class="modal fade" id="delete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-sm modal-middle">
+		<div class="modal-content modal-strong">
+			<div class="modal-body">
+				<h3>Вы уверены, что хотите удалить запись?</h3>
+				<button class="btn btn-ghost btn-bold" ng-click="delete()">Да</button>
+				<button class="btn btn-ghost btn-bold" data-dismiss="modal">Нет</button>	
+			</div>
+		</div>
+	</div>
+</div>

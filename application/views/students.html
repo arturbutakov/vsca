@@ -1,0 +1,63 @@
+﻿<div class=" col-md-offset-3 col-md-6 nopadding students">
+	<h1>Участники</h1>
+
+	<!-- НАБОРЫ -->
+	<div class="row waves-block" ng-repeat="wave in waves | orderBy: '-id' | limitTo: 2">
+		<h2><b>{{ wave.name }}</b></h2>
+
+		<!-- УЧАСТНИКИ В НАБОРЕ -->
+		<div class="row students-block" ng-repeat="student in students | filter:{waveId:wave.id}">
+			<div class="col-md-4 nopadding">
+				<img src="img/students/{{ student.image }}" class=" img-responsive">
+			</div>
+			<div class="col-md-8 nopadding">
+				<h3>{{ student.name }} {{ student.programName | lowercase }}</h3>
+				<p>{{ student.info }}</p>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- ПРАВОЕ МЕНЮ -->
+<div class="col-md-3 hidden-xs hidden-sm">
+	<div class="programs-fixed">
+		<ul>
+			<li ng-repeat="wave in waves | orderBy: '-id'">
+				<a href="#{{ wave.id }}">
+					{{ wave.name }}
+				</a>
+			</li>
+		</ul>
+		<div>
+			<button class="btn btn-block btn-ghost btn-bold" data-toggle="modal" data-target="#instruction">Как стать участником?</button>
+		</div>
+	</div>
+</div>
+
+<!-- ИНСТРУКЦИЯ -->
+<div class="modal fade" id="instruction" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content modal-strong">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3 class="modal-title" id="myModalLabel">Инструкция: <b>Как начать обучение в ВШСИ?</b></h3>
+			</div>
+			<div class="modal-body">
+				<img src="img/instruction.jpg" class="img-responsive">
+				<!-- <div class="col-md-4">
+					<h1><span class="glyphicon glyphicon-pencil"></span> Заявка</h1>
+				</div>
+				<div class="col-md-4">
+					<h1><span class="glyphicon glyphicon-user"></span> Собеседова</h1>
+				</div>
+				<div class="col-md-4">
+					<h1><span class="glyphicon glyphicon-eye-open"></span> Обучение</h1>
+				</div> -->
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-ghost btn-bold">Отправить</button>
+			</div>
+		</div>
+	</div>
+</div>

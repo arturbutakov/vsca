@@ -1,0 +1,59 @@
+.teachers > div {
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 20px;
+	background-color: rgba(255,255,255,.05);
+}
+.teachers > div:last-child {
+	border-bottom: transparent;
+}
+.teachers-block > div {
+	padding-left: 10px;
+	padding-right: 10px;
+}
+.teachers-block > div:first-child {
+	padding-left: 0px;
+	padding-right: 20px;
+}
+.teachers-block > div:last-child {
+	padding-left: 20px;
+	padding-right: 0px;
+}
+.teachers-block > div > p {
+	text-align: justify;
+}
+.teachers-block > div > img {
+	max-height: 250px;
+	margin: 0 auto;
+	/*max-width: 300px;*/
+}
+.teachers-new {
+	padding-bottom: 15px;
+	border-bottom: 5px solid rgba(219,254,74,1);
+	text-align: center;
+}
+.teachers-new > div > h3 {
+	/*font-weight: 600;*/
+}
+.teachers-old > div {
+	text-align: center;
+	margin-bottom: 10px;
+	/*border-bottom: 5px solid rgba(219,254,74,1);*/
+}
+.teachers-old > div:hover .hoverbutton {
+	opacity: 1;
+}
+.teachers-old > div:hover {
+	opacity: 1;
+}
+.teachers-old > h2 {
+	margin-bottom: 20px;
+	margin-top: 10px;
+}
+.hoverbutton {
+	position: absolute;
+	top: 10px;
+	/*background-color: transparent;*/
+	border: none;
+	opacity: 0;
+}

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html ng-app="mainApp">
+<head>
+	<base href="/" />
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta http-equiv="Cache-Control" content="no-cache">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<link rel="shortcut icon" href="img/icon.ico" type="image/x-icon">
+	<title>В. Ш. C. И.</title>
+	
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/news.css">
+	<link rel="stylesheet" href="css/programs.css">
+	<link rel="stylesheet" href="css/teachers.css">
+	<link rel="stylesheet" href="css/projects.css">
+	<link rel="stylesheet" href="css/students.css">
+	<link rel="stylesheet" href="css/admin.css">
+
+	<script src="js/angular.min.js"></script>
+	<script src="js/angular_route.js"></script>
+</head>
+
+<body ng-controller="mainAppCtrl" data-spy="scroll" data-target="#scrollspy-menu">
+	<div class="container-fluid">
+		<div class="row">
+
+			<!-- МЕНЮ -->
+			<nav class="navbar menu navbar-fixed-top" role="navigation">
+				<div class="col-md-offset-1 col-md-10 container-fluid nopadding">
+					
+					<!-- СВОРАЧИВАНИЕ МЕНЮ -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle menu-toggle collapsed" data-toggle="collapse" data-target="#menu" aria-expanded="false">
+							<span class="glyphicon glyphicon-align-justify"></span>
+						</button>
+					</div>
+					
+					<!-- ВЕРХНЕЕ И ЛЕВОЕ МЕНЮ -->
+					<div class="collapse navbar-collapse" id="menu">
+
+						<!-- ЛЕВОЕ МЕНЮ -->
+						<div class="nav-fixed hidden-xs hidden-sm">
+							<a href="/news"><img src="img/logo-white.jpg"></a>
+							<ul class="nav">
+								<div ng-repeat="link in links">
+									<li>
+										<a href="{{ link.link }}" target="_blank">
+											{{ link.name }}
+										</a>
+									</li><br/>
+								</div>
+								<div> <!-- ВРЕМЕННО -->
+									<li>
+										<a href="/auth">
+											Войти
+										</a>
+									</li><br/>
+									<li>
+										<a href="/admin">
+											Админка
+										</a>
+									</li>
+								</div>
+							</ul>
+						</div>
+
+						<!-- ВЕРХНЕЕ МЕНЮ -->
+						<div class="col-md-offset-3 col-md-9 nopadding">
+							<ul class="nav navbar-nav menu-center menu col-md-9 nopadding">
+								<li ng-class="menu[0].value">
+									<a href="/">
+										Новости
+									</a>
+								</li>
+								<li ng-class="menu[1].value">
+									<a href="/programs">
+										Направления
+									</a>
+								</li>
+								<li ng-class="menu[2].value">
+									<a href="/teachers">
+										Преподаватели
+									</a>
+								</li>
+								<li ng-class="menu[3].value">
+									<a href="/students">
+										Участники
+									</a>
+								</li>
+								<li ng-class="menu[4].value">
+									<a href="/projects">
+										Проекты
+									</a>
+								</li>
+
+							</ul>
+							<ul class="nav navbar-nav navbar-right menu-right nomargin hidden-xs hidden-sm">
+								<li>
+									<a>
+									<span class="glyphicon glyphicon-phone-alt"> </span>
+									<span> 8 (908) 444 55 66</span>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</nav>
+
+			<!-- КОНТЕНТ -->
+			<div class="col-md-10 col-md-offset-1 content">
+				<div ng-view></div>
+			</div>	
+			
+			<!-- ФУТЕР -->
+			<div class="col-md-10 col-md-offset-1 footer">
+				<div class="col-md-3 nopadding footer-left">
+					<p>Подпишитесь на новостную рассылку:</p>
+					<input type="text" placeholder="Ваша электронная почта..." class="btn-ghost btn btn-thin btn-sm btn-input">
+					<button class="btn-ghost btn btn-bold btn-sm">
+						<span class="glyphicon glyphicon-chevron-right"></span>
+					</button>
+				</div>
+				<div class="col-md-6 nopadding footer-center">
+					<p>Владивостокская школа современного искусства, 2016</p>
+				</div>
+				<div class="col-md-3 nopadding footer-right">
+					<a href="#">
+						English version
+					</a>
+				</div>
+				
+				<br/>
+			</div>
+		</div>
+	</div>
+
+	
+	<script src="js/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/script.js"></script>
+	<script src="js/controller.js"></script>
+	<script src="js/smoothscroll.js"></script>
+</body>
+
+</html>

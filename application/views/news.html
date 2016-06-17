@@ -1,0 +1,42 @@
+<div class=" col-md-offset-3 col-md-6 nopadding news">
+	<h1>Новости</h1>
+
+	<!-- НОВОСТЬ -->
+	<div class="row" id="{{ new.id }}" ng-repeat="new in news | orderBy: '-id' | limitTo: count | filter:search">
+		<h2><b>{{ new.title | uppercase }}</b></h2>
+		<img ng-src="img/news/{{ new.image }}" class="img-responsive">
+		<h4>{{ new.info }}</h4>
+		<p>{{ new.descriptionShort }}</p>
+
+		<button type="button" class="btn btn-block btn-ghost btn-thin" data-toggle="collapse" data-target="#{{ new.id }}full" ng-click="changeButton(new.id);">
+		  {{ new.buttonValue }}
+		</button>
+
+		<div id="{{ new.id }}full" class="collapse">
+			<p>{{ new.descriptionLong }}</p>
+		</div>
+	</div>
+	
+	<!-- КНОПКА ЗАГРУЗКИ НОВОСТЕЙ -->
+	<div>
+		<button class="btn btn-block btn-ghost btn-bold" ng-click="loadNews()">Загрузить еще</button>
+	</div>
+</div>
+
+
+<!-- ПРАВОЕ МЕНЮ -->
+<div class="col-md-3 hidden-xs hidden-sm">
+	<div class="news-fixed" id="scrollspy-menu">
+		<ul class="nav">
+			<li ng-repeat="new in news | orderBy: '-id' | limitTo: count | filter:search">
+				<a href="#{{ new.id }}" ng-click="scrollTo(new.id)" >
+				<!-- <a href="#{{ new.id }}"  target="_self"> -->
+					{{ new.title | uppercase }}
+				</a>
+			</li>
+		</ul>
+		<div>
+			<input class="btn btn-block btn-ghost btn-thin btn-input" ng-model="search" placeholder="Поиск"></input>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+.programs > div {
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-top: 20px;
+	background-color: rgba(255,255,255,.05);
+	border-bottom: 5px solid rgba(219,254,74,1);
+}
+.programs > div:last-child {
+	border-bottom: transparent;
+}
+.programs > div > p {
+	text-align: justify;
+}
+.programs-fixed {
+	position: fixed;
+	left: 72%;
+	top: 149px;
+	width: 20%;
+	text-align: center;
+	padding-left: 15px;
+}
+.programs-fixed > ul {
+	list-style: none;
+	margin-left: 0px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	padding-left: 0px;
+	border-top: 5px solid rgba(219,254,74,1);
+}
+.programs-fixed > ul > li {
+	margin-bottom: 15px;
+	line-height: 120%;
+	margin-top: 15px;
+}
+.programs-fixed > ul > li > a {
+	font-size: 18px;
+}
+.programs-fixed > ul > li > a:hover {
+	border-width: 2px;
+}
+
